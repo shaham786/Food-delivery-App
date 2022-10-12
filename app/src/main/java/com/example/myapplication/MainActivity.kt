@@ -47,6 +47,8 @@ class MainActivity : AppCompatActivity() {
             /*val intent = Intent(this@MainActivity, Welcome::class.java)
             startActivity(intent)
 */
+
+            //test commit
         }
 
 
