@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".Details"
+    >
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar2"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="@color/lightorange">
+        <androidx.appcompat.widget.AppCompatImageButton
+
+            android:id="@+id/backbtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ic_baseline_arrow_back_24"
+            />
+
+        <TextView
+            android:layout_marginStart="25dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Detail Screen"
+            android:textSize="25sp"
+            android:textColor="@color/white"/>
+
+    </androidx.appcompat.widget.Toolbar>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl1"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        app:layout_constraintTop_toBottomOf="@id/toolbar2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/cl2">
+
+
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/detailsIv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="fitXY"
+            app:layout_constraintBottom_toBottomOf="@id/cl1"
+            app:layout_constraintEnd_toEndOf="@id/cl1"
+
+            app:layout_constraintStart_toStartOf="@id/cl1"
+            app:layout_constraintTop_toTopOf="@id/cl1"
+            />
+        <com.tbuonomo.viewpagerdotsindicator.WormDotsIndicator
+            android:id="@+id/worm_dot"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:dotsColor="@color/lightorange"
+            app:layout_constraintBottom_toBottomOf="@id/detailsIv"
+            app:layout_constraintStart_toStartOf="@id/detailsIv"
+            app:layout_constraintEnd_toEndOf="@id/detailsIv"
+            android:layout_marginBottom="10dp"/>
+
+        <com.makeramen.roundedimageview.RoundedImageView
+            android:id="@+id/detailsIv2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="fitXY"
+            app:layout_constraintBottom_toBottomOf="@id/cl1"
+            app:layout_constraintEnd_toEndOf="@id/cl1"
+
+            app:layout_constraintStart_toStartOf="@id/cl1"
+            app:layout_constraintTop_toTopOf="@id/cl1"
+            />
+<!--        <androidx.viewpager2.widget.ViewPager2-->
+<!--            android:id="@+id/Viewpager2"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:scaleType="fitXY"-->
+<!--            app:layout_constraintBottom_toBottomOf="@id/cl1"-->
+<!--            app:layout_constraintEnd_toEndOf="@id/cl1"-->
+
+<!--            app:layout_constraintStart_toStartOf="@id/cl1"-->
+<!--            app:layout_constraintTop_toTopOf="@id/cl1"-->
+<!--            />-->
+
+
+
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl2"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:padding="10dp"
+
+        app:layout_constrainedHeight="true"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/cl1">
+
+
+    <TextView
+        android:id="@+id/detailsTTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="20dp"
+        android:text="@string/pizza"
+
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+
+        app:layout_constraintTop_toTopOf="@id/cl2"
+        app:layout_constraintStart_toStartOf="parent"
+        />
+    <TextView
+        android:id="@+id/detailsDTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="20dp"
+        android:textStyle="bold"
+        android:textSize="15sp"
+        android:textColor="@color/black"
+        android:text="Delivery fees"
+
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/productDetailsTv"
+        />
+    <TextView
+        android:id="@+id/productDetailsTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+
+        android:layout_marginEnd="16dp"
+        android:textColor="@color/lightorange"
+        android:text="@string/details"
+        android:drawableEnd="@drawable/star"
+        android:drawablePadding="3dp"
+        android:textSize="15sp"
+        app:layout_constraintStart_toStartOf="@id/detailsTTv"
+        app:layout_constraintTop_toBottomOf="@id/detailsTTv"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

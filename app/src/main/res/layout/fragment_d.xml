@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+
+    tools:context=".FragmentD">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:background="@color/white"
+        >
+
+        <LinearLayout
+            android:id="@+id/l1"
+            android:layout_width="190dp"
+            android:layout_height="150dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="10dp"
+            android:backgroundTint="@color/lightgrey"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:background="@drawable/border"
+            android:orientation="vertical"
+            >
+
+            <TextView
+                android:id="@+id/tv1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="5dp"
+                android:paddingStart="5dp"
+                android:textColor="@color/black"
+                android:text="Food Delivery"
+                android:textSize="18sp"
+                />
+
+            <TextView
+                android:layout_width="70dp"
+                android:layout_height="wrap_content"
+                android:text="Order from your favourite restaurant"
+                android:textSize="10sp"
+                android:textColor="@color/black"
+                android:layout_marginTop="5dp"
+                android:layout_marginStart="5dp"
+
+                />
+
+            <ImageView
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_marginTop="10dp"
+                android:layout_gravity="bottom|right"
+                android:scaleType="fitXY"
+                android:background="@drawable/pngpizza" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/l2"
+            android:layout_width="190dp"
+            android:layout_height="70dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="10dp"
+            android:backgroundTint="@color/lightgrey"
+            app:layout_constraintTop_toBottomOf="@id/l1"
+            app:layout_constraintStart_toStartOf="parent"
+            android:background="@drawable/border"
+            android:orientation="vertical"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="5dp"
+                android:paddingStart="5dp"
+                android:textColor="@color/black"
+                android:text="Dine In"
+                android:textSize="18sp"
+                />
+
+            <TextView
+                android:layout_width="70dp"
+                android:layout_height="wrap_content"
+                android:text="Eat out and Save 20% "
+                android:textSize="10sp"
+                android:textColor="@color/black"
+                android:layout_marginTop="5dp"
+                android:layout_marginStart="5dp"
+                />
+            <ImageView
+                android:layout_width="70dp"
+                android:layout_height="40dp"
+                android:layout_marginEnd="-15dp"
+                android:layout_marginTop="-22.2dp"
+                android:layout_gravity="bottom|right"
+                android:scaleType="fitXY"
+                android:background="@drawable/dinein" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/l3"
+            android:layout_width="190dp"
+            android:layout_height="150dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="10dp"
+            android:backgroundTint="@color/lightgrey"
+            app:layout_constraintTop_toTopOf="parent"
+
+            app:layout_constraintStart_toEndOf="@id/l1"
+            android:background="@drawable/border"
+            android:orientation="vertical"
+            >
+
+            <TextView
+                android:id="@+id/tv3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="5dp"
+                android:paddingStart="5dp"
+                android:textColor="@color/black"
+                android:text="Mart"
+                android:textSize="18sp"
+                />
+
+            <TextView
+                android:layout_width="70dp"
+                android:layout_height="wrap_content"
+                android:text="Order Your Favourite snacks"
+                android:textSize="10sp"
+                android:textColor="@color/black"
+                android:layout_marginTop="5dp"
+                android:layout_marginStart="5dp"
+
+                />
+
+            <ImageView
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_marginTop="10dp"
+                android:layout_gravity="bottom|right"
+                android:scaleType="fitXY"
+                android:background="@drawable/pngpizza" />
+
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/l5"
+            android:layout_width="190dp"
+            android:layout_height="70dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="10dp"
+            android:backgroundTint="@color/lightgrey"
+            app:layout_constraintTop_toBottomOf="@id/l3"
+            app:layout_constraintStart_toEndOf="@id/l2"
+            android:background="@drawable/border"
+            android:orientation="vertical"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="5dp"
+                android:paddingStart="5dp"
+                android:textColor="@color/black"
+                android:text="Pick Up"
+                android:textSize="18sp"
+                />
+
+            <TextView
+                android:layout_width="70dp"
+                android:layout_height="wrap_content"
+                android:text="Pick Up and Save 50%"
+                android:textSize="10sp"
+                android:textColor="@color/black"
+                android:layout_marginTop="5dp"
+                android:layout_marginStart="5dp"
+                />
+            <ImageView
+                android:layout_width="70dp"
+                android:layout_height="40dp"
+                android:layout_marginEnd="-15dp"
+                android:layout_marginTop="-22.2dp"
+                android:layout_gravity="bottom|right"
+                android:scaleType="fitXY"
+                android:background="@drawable/dinein" />
+
+        </LinearLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</FrameLayout>

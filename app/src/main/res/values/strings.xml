@@ -1,0 +1,43 @@
+<resources>
+    <string name="app_name">My Application</string>
+    <string name="name">Name:</string>
+    <string name="password">Password</string>
+    <string name="enter_password">Enter Password</string>
+    <string name="login">Login</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="type_your_name">Type Your Name</string>
+    <string name="title_activity_sign_up">SignUp</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="user_name">User Name</string>
+    <string name="e_mail">E-mail</string>
+    <string name="username">UserName</string>
+    <string name="someone_xyz_com">Someone@xyz.com</string>
+    <string name="gender">Gender</string>
+    <string name="male">Male</string>
+    <string name="female">Female</string>
+    <string name="welcome">Welcome</string>
+    <string name="already_have_an_account">Already have an Account?</string>
+    <string name="welcome_user">Welcome User</string>
+    <string name="pizza">Pizza</string>
+    <string name="details">Details</string>
+    <string name="foods_available">Foods Available</string>
+    <string name="resturants">Resturants</string>
+
+
+    <string name="facebook_app_id">776022676845588</string>
+    <string name="fb_login_protocol_scheme">fb1234</string>
+    <string name="facebook_client_token">ffe28c9a5b89f8dfada3fd6b62e59b67</string>
+    <string name="sign_out">Sign Out</string>
+
+
+    <string name="Rs."></string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>
