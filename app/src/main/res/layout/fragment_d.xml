@@ -105,7 +105,7 @@
         <LinearLayout
             android:id="@+id/l3"
             android:layout_width="190dp"
-            android:layout_height="150dp"
+            android:layout_height="70dp"
             android:layout_marginTop="10dp"
             android:layout_marginStart="10dp"
             android:backgroundTint="@color/lightgrey"
@@ -139,12 +139,13 @@
                 />
 
             <ImageView
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:layout_marginTop="10dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginEnd="1dp"
+                android:layout_marginTop="-33dp"
                 android:layout_gravity="bottom|right"
                 android:scaleType="fitXY"
-                android:background="@drawable/pngpizza" />
+                android:background="@drawable/mart3" />
 
         </LinearLayout>
         <LinearLayout
@@ -154,7 +155,7 @@
             android:layout_marginTop="10dp"
             android:layout_marginStart="10dp"
             android:backgroundTint="@color/lightgrey"
-            app:layout_constraintTop_toBottomOf="@id/l3"
+            app:layout_constraintTop_toBottomOf="@id/l4"
             app:layout_constraintStart_toEndOf="@id/l2"
             android:background="@drawable/border"
             android:orientation="vertical"
@@ -180,13 +181,56 @@
                 android:layout_marginStart="5dp"
                 />
             <ImageView
-                android:layout_width="70dp"
+                android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:layout_marginEnd="-15dp"
+                android:layout_marginEnd="-1dp"
                 android:layout_marginTop="-22.2dp"
                 android:layout_gravity="bottom|right"
                 android:scaleType="fitXY"
-                android:background="@drawable/dinein" />
+                android:background="@drawable/pick3" />
+
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/l4"
+            android:layout_width="190dp"
+            android:layout_height="70dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="10dp"
+            android:backgroundTint="@color/lightgrey"
+            app:layout_constraintTop_toBottomOf="@id/l3"
+            app:layout_constraintStart_toEndOf="@id/l2"
+
+            android:background="@drawable/border"
+            android:orientation="vertical"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="5dp"
+                android:paddingStart="5dp"
+                android:textColor="@color/black"
+                android:text="Shops"
+                android:textSize="18sp"
+                />
+
+            <TextView
+                android:layout_width="70dp"
+                android:layout_height="wrap_content"
+                android:text="Everyday essentials"
+                android:textSize="10sp"
+                android:textColor="@color/black"
+                android:layout_marginTop="5dp"
+                android:layout_marginStart="5dp"
+                />
+            <ImageView
+                android:layout_width="70dp"
+                android:layout_height="40dp"
+                android:layout_marginEnd="-1dp"
+                android:layout_marginTop="-22.2dp"
+                android:layout_gravity="bottom|right"
+                android:scaleType="fitXY"
+                android:background="@drawable/shop1" />
 
         </LinearLayout>
 

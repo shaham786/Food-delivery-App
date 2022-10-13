@@ -7,25 +7,25 @@ import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.viewpager.widget.ViewPager
+import androidx.viewpager2.widget.ViewPager2
+import com.codes29.introscreen.transformers.ZoomOutPageTransformer
+import com.example.myapplication.databinding.ActivityDetailsBinding
 import com.tbuonomo.viewpagerdotsindicator.WormDotsIndicator
 
 class Details : AppCompatActivity() {
+    private lateinit var binding : ActivityDetailsBinding
 
-    private lateinit var viewPager: ViewPager
-    private lateinit var viewPagerAdapter: ViewPagerAdapter
+    /*private lateinit var viewPager: ViewPager
+    private lateinit var viewPagerAdapter: ViewPagerAdapter*/
     private var imageList = ArrayList<String>()
 
 
     @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_details)
+        binding = ActivityDetailsBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-
-
-        viewPager = findViewById(R.id.detailsIv)
-        val wormdots = findViewById<WormDotsIndicator>(R.id.worm_dot)
 
 
         val food = intent.getSerializableExtra("food") as Product?
@@ -34,11 +34,29 @@ class Details : AppCompatActivity() {
 
         }
 
+        binding.Viewpager2.adapter = ViewPager2Adapter(this@Details, imageList)
+        binding.Viewpager2.setPageTransformer(ZoomOutPageTransformer())
 
-        viewPagerAdapter = ViewPagerAdapter(this@Details, imageList)
+        binding.wormDot.attachTo(binding.Viewpager2)
 
-        viewPager.adapter = viewPagerAdapter
-        wormdots.setViewPager(viewPager)
+
+
+
+//        viewPager = findViewById(R.id.detailsIv)
+//        val wormdots = findViewById<WormDotsIndicator>(R.id.worm_dot)
+//
+//
+//        val food = intent.getSerializableExtra("food") as Product?
+//        food?.images?.forEach {
+//            imageList.add(it)
+//
+//        }
+//
+//
+//        viewPagerAdapter = ViewPagerAdapter(this@Details, imageList)
+//
+//        viewPager.adapter = viewPagerAdapter
+//        wormdots.setViewPager(viewPager)
 
         if (food != null) {
 
@@ -55,7 +73,7 @@ class Details : AppCompatActivity() {
 
 
         }
-//        For RECYCLERVIEW 1
+//        For RECYCLERVIEW 1 (Restaurants onclick Details)
         val food1 = intent.getParcelableExtra<Fooddata>("food")
         if (food1 != null) {
 
@@ -81,5 +99,6 @@ class Details : AppCompatActivity() {
             startActivity(intent)
         }
     }
+
 
 }
