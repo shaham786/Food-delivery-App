@@ -52,6 +52,14 @@
             app:layout_constraintStart_toStartOf="@id/cl1"
             app:layout_constraintTop_toTopOf="@id/cl1"
             />
+
+            <androidx.viewpager2.widget.ViewPager2
+                android:id="@+id/Viewpager2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="fitXY"
+                />
+
         <com.tbuonomo.viewpagerdotsindicator.WormDotsIndicator
             android:id="@+id/worm_dot"
             android:layout_width="wrap_content"
@@ -73,21 +81,6 @@
             app:layout_constraintStart_toStartOf="@id/cl1"
             app:layout_constraintTop_toTopOf="@id/cl1"
             />
-<!--        <androidx.viewpager2.widget.ViewPager2-->
-<!--            android:id="@+id/Viewpager2"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="match_parent"-->
-<!--            android:scaleType="fitXY"-->
-<!--            app:layout_constraintBottom_toBottomOf="@id/cl1"-->
-<!--            app:layout_constraintEnd_toEndOf="@id/cl1"-->
-
-<!--            app:layout_constraintStart_toStartOf="@id/cl1"-->
-<!--            app:layout_constraintTop_toTopOf="@id/cl1"-->
-<!--            />-->
-
-
-
-
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
