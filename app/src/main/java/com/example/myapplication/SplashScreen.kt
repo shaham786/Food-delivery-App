@@ -1,21 +1,14 @@
 package com.example.myapplication
 
-import android.app.Activity
-import android.app.PendingIntent.getActivity
 import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
 import android.os.Handler
 import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
-import com.google.android.gms.auth.api.signin.GoogleSignIn
-import com.google.firebase.auth.FirebaseAuth
 
 
 @Suppress("DEPRECATION")
 class SplashScreen : AppCompatActivity() {
-
-    private lateinit var auth: FirebaseAuth
 
 
     override fun onCreate(savedInstanceState: Bundle?) {

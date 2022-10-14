@@ -19,6 +19,7 @@ import com.google.android.gms.auth.api.Auth
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.ConnectionResult
 import com.google.android.gms.common.api.GoogleApiClient
+import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
@@ -32,11 +33,12 @@ class Welcome : AppCompatActivity(), GoogleApiClient.OnConnectionFailedListener,
     private val recyclerAdapter = RecyclerAdapter(arraylist3)
     private val recyclerAdapter2 = RecyclerAdapter2(arrayList)
 
+    @OptIn(DelicateCoroutinesApi::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_welcome)
 //        supportActionBar!!.setBackgroundDrawable(ColorDrawable(Color.parseColor("#144BDE")))
-        var progressBar = findViewById<ProgressBar>(R.id.progressBar)
+        val progressBar = findViewById<ProgressBar>(R.id.progressBar)
         try {
 
             progressBar.visibility = View.VISIBLE

@@ -7,10 +7,7 @@ import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.viewpager2.widget.ViewPager2
-import com.codes29.introscreen.transformers.ZoomOutPageTransformer
 import com.example.myapplication.databinding.ActivityDetailsBinding
-import com.tbuonomo.viewpagerdotsindicator.WormDotsIndicator
 
 class Details : AppCompatActivity() {
     private lateinit var binding : ActivityDetailsBinding

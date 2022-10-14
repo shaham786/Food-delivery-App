@@ -1,14 +1,14 @@
-package com.codes29.introscreen.transformers
+package com.example.myapplication
 
 import android.graphics.Camera
 import android.graphics.Matrix
 import android.view.View
-import androidx.viewpager.widget.ViewPager
 import androidx.viewpager2.widget.ViewPager2
+import kotlin.math.abs
 
 class ZoomOutPageTransformer : ViewPager2.PageTransformer {
     override fun transformPage(page: View, pos: Float) {
-        val rotation = (if (pos < 0) 30f else -30f) * Math.abs(pos)
+        val rotation = (if (pos < 0) 30f else -30f) * abs(pos)
         page.translationX = getOffsetX(rotation, page.width, page.height)
         page.pivotX = page.width * 0.5f
         page.pivotY = 0f
@@ -18,7 +18,7 @@ class ZoomOutPageTransformer : ViewPager2.PageTransformer {
     private fun getOffsetX(rotation: Float, width: Int, height: Int): Float {
         MATRIX_OFFSET.reset()
         CAMERA_OFFSET.save()
-        CAMERA_OFFSET.rotateY(Math.abs(rotation))
+        CAMERA_OFFSET.rotateY(abs(rotation))
         CAMERA_OFFSET.getMatrix(MATRIX_OFFSET)
         CAMERA_OFFSET.restore()
         MATRIX_OFFSET.preTranslate(-width * 0.5f, -height * 0.5f)

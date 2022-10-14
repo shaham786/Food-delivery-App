@@ -26,12 +26,6 @@ class ViewPager2Adapter(private val context: Context, private val dataset: Array
 
     }
 
-//    class ViewPagerAdapter(
-//        private val context: Context,
-//        private val labelList: MutableList<String>,
-//        private val colorList: MutableList<String>
-//    ) : RecyclerView.Adapter<ViewPagerAdapter.ViewPagerHolder>()
-
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewPagerHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.imagelayout,parent,false)
@@ -45,6 +39,7 @@ class ViewPager2Adapter(private val context: Context, private val dataset: Array
     override fun getItemCount(): Int {
         return dataset.size
     }
+
 
 
 }
