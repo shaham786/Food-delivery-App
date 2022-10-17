@@ -3,18 +3,26 @@ package com.example.myapplication
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.RecyclerView
+import androidx.viewpager2.widget.ViewPager2
+import androidx.viewpager2.widget.ViewPager2.OnPageChangeCallback
 import com.example.myapplication.databinding.ActivityDetailsBinding
+import java.text.FieldPosition
 
 class Details : AppCompatActivity() {
     private lateinit var binding : ActivityDetailsBinding
+    private var dataset = ArrayList<String>()
+
 
     /*private lateinit var viewPager: ViewPager
     private lateinit var viewPagerAdapter: ViewPagerAdapter*/
-    private var imageList = ArrayList<String>()
+
 
 
     @SuppressLint("SetTextI18n")
@@ -24,20 +32,19 @@ class Details : AppCompatActivity() {
         setContentView(binding.root)
 
 
-
         val food = intent.getSerializableExtra("food") as Product?
         food?.images?.forEach {
-            imageList.add(it)
+            dataset.add(it)
 
         }
-
-        binding.Viewpager2.adapter = ViewPager2Adapter(this@Details, imageList)
+        binding.Viewpager2.adapter = ViewPager2Adapter(this,dataset)
         binding.Viewpager2.setPageTransformer(ZoomOutPageTransformer())
-
         binding.wormDot.attachTo(binding.Viewpager2)
 
 
-
+//        binding.Viewpager2.adapter = ViewPager2Adapter(this@Details, dataset)
+//        binding.Viewpager2.setPageTransformer(ZoomOutPageTransformer())
+//        binding.wormDot.attachTo(binding.Viewpager2)
 
 //        viewPager = findViewById(R.id.detailsIv)
 //        val wormdots = findViewById<WormDotsIndicator>(R.id.worm_dot)
@@ -48,8 +55,6 @@ class Details : AppCompatActivity() {
 //            imageList.add(it)
 //
 //        }
-//
-//
 //        viewPagerAdapter = ViewPagerAdapter(this@Details, imageList)
 //
 //        viewPager.adapter = viewPagerAdapter
@@ -96,6 +101,7 @@ class Details : AppCompatActivity() {
             startActivity(intent)
         }
     }
+
 
 
 }

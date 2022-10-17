@@ -5,8 +5,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import androidx.viewpager2.widget.ViewPager2
 import com.bumptech.glide.Glide
 
 class ViewPager2Adapter(private val context: Context, private val dataset: ArrayList<String>)
@@ -34,12 +34,12 @@ class ViewPager2Adapter(private val context: Context, private val dataset: Array
 
     override fun onBindViewHolder(holder: ViewPagerHolder, position: Int) {
         Glide.with(holder.itemimage.context).load(dataset[position]).into(holder.itemimage)
+
     }
 
     override fun getItemCount(): Int {
         return dataset.size
     }
-
 
 
 }

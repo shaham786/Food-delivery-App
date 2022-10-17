@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity"
-    android:background="#FF9800"
+    android:background="@color/lightorange"
     android:paddingTop="50dp"
     android:paddingStart="20dp"
     android:paddingEnd="20dp"

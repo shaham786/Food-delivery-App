@@ -8,6 +8,7 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
+import com.example.myapplication.databinding.ActivityMainBinding
 import com.facebook.AccessToken
 import com.facebook.CallbackManager
 import com.facebook.FacebookCallback
@@ -28,6 +29,8 @@ import com.google.firebase.auth.GoogleAuthProvider
 @Suppress("DEPRECATION")
 class MainActivity : AppCompatActivity() {
 
+
+    private lateinit var binding : ActivityMainBinding
     private lateinit var googleSignInClient: GoogleSignInClient
     private lateinit var auth: FirebaseAuth
     private var callbackManager: CallbackManager? = null
@@ -37,10 +40,12 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
 
         callbackManager = CallbackManager.Factory.create()
-        val signInbtn = findViewById<LoginButton>(R.id.login_button)
+        val signInbtn = binding.loginButton
         signInbtn.setReadPermissions("email")
         signInbtn.setOnClickListener{
             fbsignIn()
@@ -58,6 +63,7 @@ class MainActivity : AppCompatActivity() {
 
         auth = FirebaseAuth.getInstance()
 
+
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
             .requestIdToken(getString(R.string.default_web_client_id))
             .requestEmail()
@@ -65,12 +71,12 @@ class MainActivity : AppCompatActivity() {
 
         googleSignInClient = GoogleSignIn.getClient(this, gso)
 
-        findViewById<SignInButton>(R.id.sign_in_button).setOnClickListener {
+        binding.signInButton.setOnClickListener {
             signInGoogle()
         }
 
 
-        val signupbtn1 = findViewById<Button>(R.id.SignUpbtn)
+        val signupbtn1 = binding.SignUpbtn
         signupbtn1.setOnClickListener {
             val intent = Intent(this@MainActivity, SignUp::class.java)
             startActivity(intent)
@@ -131,7 +137,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun fbsignIn() {
-        findViewById<LoginButton>(R.id.login_button).registerCallback(callbackManager, object : FacebookCallback<LoginResult>{
+        binding.loginButton.registerCallback(callbackManager, object : FacebookCallback<LoginResult>{
             override fun onCancel() {
 
             }

@@ -10,8 +10,8 @@ object RetrofitHelper {
     val BASE_URL2 = "https://dummyjson.com/"
 
     private fun getLoggingInterceptor(): OkHttpClient {
-        val interceptor = HttpLoggingInterceptor();
-        interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
+        val interceptor = HttpLoggingInterceptor()
+        interceptor.setLevel(HttpLoggingInterceptor.Level.BODY)
         var client = OkHttpClient.Builder().addInterceptor(interceptor).build()
         return client
 

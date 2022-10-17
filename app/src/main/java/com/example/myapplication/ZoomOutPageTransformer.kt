@@ -1,37 +1,37 @@
 package com.example.myapplication
 
-import android.graphics.Camera
-import android.graphics.Matrix
 import android.view.View
 import androidx.viewpager2.widget.ViewPager2
-import kotlin.math.abs
 
 class ZoomOutPageTransformer : ViewPager2.PageTransformer {
-    override fun transformPage(page: View, pos: Float) {
-        val rotation = (if (pos < 0) 30f else -30f) * abs(pos)
-        page.translationX = getOffsetX(rotation, page.width, page.height)
-        page.pivotX = page.width * 0.5f
-        page.pivotY = 0f
-        page.rotationY = rotation
-    }
+    private val MIN_SCALE = 0.75f
 
-    private fun getOffsetX(rotation: Float, width: Int, height: Int): Float {
-        MATRIX_OFFSET.reset()
-        CAMERA_OFFSET.save()
-        CAMERA_OFFSET.rotateY(abs(rotation))
-        CAMERA_OFFSET.getMatrix(MATRIX_OFFSET)
-        CAMERA_OFFSET.restore()
-        MATRIX_OFFSET.preTranslate(-width * 0.5f, -height * 0.5f)
-        MATRIX_OFFSET.postTranslate(width * 0.5f, height * 0.5f)
-        TEMP_FLOAT_OFFSET[0] = width.toFloat()
-        TEMP_FLOAT_OFFSET[1] = height.toFloat()
-        MATRIX_OFFSET.mapPoints(TEMP_FLOAT_OFFSET)
-        return (width - TEMP_FLOAT_OFFSET[0]) * if (rotation > 0.0f) 1.0f else -1.0f
-    }
+    override fun transformPage(page: View, position: Float) {
+        val pageWidth = page.width
+        if (position < -1) { // [ -Infinity,-1 )
+            // This page is way off-screen to the left.
+            page.alpha = 0f
+        } else if (position <= 0) { // [-1,0]
+            // Use the default slide transition when moving to the left page
+            page.alpha = 1f
+            page.translationX = 0f
+            page.scaleX = 1f
+            page.scaleY = 1f
+        } else if (position <= 1) { // (0,1]
+            // Fade the page out.
+            page.alpha = 1 - position
 
-    companion object {
-        private val MATRIX_OFFSET = Matrix()
-        private val CAMERA_OFFSET = Camera()
-        private val TEMP_FLOAT_OFFSET = FloatArray(2)
+            // Counteract the default slide transition
+            page.translationX = pageWidth * -position
+
+            // Scale the page down ( between MIN_SCALE and 1 )
+            val scaleFactor = (MIN_SCALE
+                    + (1 - MIN_SCALE) * (1 - Math.abs(position)))
+            page.scaleX = scaleFactor
+            page.scaleY = scaleFactor
+        } else { // ( 1, +Infinity ]
+            // This page is way off-screen to the right.
+            page.alpha = 0f
+        }
     }
 }
