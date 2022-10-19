@@ -7,10 +7,11 @@ import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import com.example.myapplication.Models.Fooddata
-import com.example.myapplication.Models.Product
+import com.example.myapplication.models.Fooddata
+import com.example.myapplication.models.Product
 import com.example.myapplication.databinding.ActivityDetailsBinding
 
+@Suppress("DEPRECATION")
 class Details : AppCompatActivity() {
     private lateinit var binding : ActivityDetailsBinding
     private var dataset = ArrayList<String>()
@@ -33,7 +34,7 @@ class Details : AppCompatActivity() {
             dataset.add(it)
 
         }
-        binding.Viewpager2.adapter = ViewPager2Adapter(this,dataset)
+        binding.Viewpager2.adapter = ViewPager2Adapter(dataset)
         binding.Viewpager2.setPageTransformer(ZoomOutPageTransformer())
         binding.wormDot.attachTo(binding.Viewpager2)
 

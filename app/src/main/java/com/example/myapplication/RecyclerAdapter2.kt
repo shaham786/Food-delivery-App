@@ -1,5 +1,6 @@
 package com.example.myapplication
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,7 +9,9 @@ import android.widget.Filterable
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.myapplication.Models.Fooddata
+import com.example.myapplication.models.Fooddata
+import java.util.*
+import kotlin.collections.ArrayList
 
 class RecyclerAdapter2 (private val dataset : ArrayList<Fooddata>):
     RecyclerView.Adapter<RecyclerAdapter2.ViewHolder>(), Filterable{
@@ -17,7 +20,7 @@ class RecyclerAdapter2 (private val dataset : ArrayList<Fooddata>):
     // exampleListFull . exampleList
 
     init {
-        emptylist = dataset as ArrayList<Fooddata>
+        emptylist = dataset
     }
 
     var onItemClick : ((Fooddata) -> Unit)? = null
@@ -60,18 +63,18 @@ class RecyclerAdapter2 (private val dataset : ArrayList<Fooddata>):
         return object  : Filter(){
             override fun performFiltering(constraints: CharSequence?): FilterResults {
                 val charString = constraints?.toString() ?: ""
-                if (charString.isEmpty()) {
-                    emptylist = dataset as ArrayList<Fooddata>
+                emptylist = if (charString.isEmpty()) {
+                    dataset
                 } else {
                     val resultlist =  ArrayList<Fooddata>()
-                    for (row in dataset!!) {
-                        if (row.textView2.toLowerCase()
-                                .startsWith(charString.toString().toLowerCase(),true)
+                    for (row in dataset) {
+                        if (row.textView2.lowercase(Locale.getDefault())
+                                .startsWith(charString.lowercase(Locale.getDefault()),true)
                         ) {
-                            resultlist?.add(row)
+                            resultlist.add(row)
                         }
                     }
-                    emptylist = resultlist
+                    resultlist
 
 
                 }
@@ -80,6 +83,7 @@ class RecyclerAdapter2 (private val dataset : ArrayList<Fooddata>):
                 return filterResults
             }
 
+            @SuppressLint("NotifyDataSetChanged")
             override fun publishResults(constraints: CharSequence?, result: FilterResults) {
                 emptylist =
                     result.values as ArrayList<Fooddata> /* = java.util.ArrayList<com.example.myapplication.Models.Fooddata> */

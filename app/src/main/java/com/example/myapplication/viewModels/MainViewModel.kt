@@ -1,10 +1,10 @@
-package com.example.myapplication.ViewModels
+package com.example.myapplication.viewModels
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.myapplication.Models.ProductList
-import com.example.myapplication.Repository.ProductsRepository
+import com.example.myapplication.models.ProductList
+import com.example.myapplication.repository.ProductsRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 

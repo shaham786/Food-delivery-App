@@ -10,7 +10,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.myapplication.Models.Product
+import com.example.myapplication.models.Product
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -22,7 +22,7 @@ class RecyclerAdapter(private var dataset: ArrayList<Product>) :
     // exampleListFull . exampleList
 
     init {
-        emptylist2 = dataset as ArrayList<Product>
+        emptylist2 = dataset
     }
 
     @SuppressLint("NotifyDataSetChanged")
@@ -84,10 +84,10 @@ class RecyclerAdapter(private var dataset: ArrayList<Product>) :
                 override fun performFiltering(constraints: CharSequence?): FilterResults {
                     val charString = constraints?.toString() ?: ""
                     emptylist2 = if (charString.isEmpty()) {
-                        dataset as ArrayList<Product>
+                        dataset
                     } else {
                         val resultlist =  ArrayList<Product>()
-                        for (row in dataset!!) {
+                        for (row in dataset) {
                             if (row.brand.lowercase(Locale.getDefault())
                                     .startsWith(charString.lowercase(Locale.getDefault()),true)
                             ) {
@@ -103,9 +103,10 @@ class RecyclerAdapter(private var dataset: ArrayList<Product>) :
                     return filterResults
                 }
 
+                @SuppressLint("NotifyDataSetChanged")
                 override fun publishResults(constraints: CharSequence?, result: FilterResults) {
                     emptylist2 =
-                        result.values as ArrayList<Product> /* = java.util.ArrayList<com.example.myapplication.Models.Fooddata> */
+                        result.values as ArrayList<Product>
                     notifyDataSetChanged()
 
 

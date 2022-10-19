@@ -11,17 +11,16 @@ import android.widget.Button
 import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.myapplication.Api.ProductsApi
-import com.example.myapplication.Api.RetrofitHelper
-import com.example.myapplication.Models.Fooddata
-import com.example.myapplication.Models.Product
-import com.example.myapplication.Repository.ProductsRepository
-import com.example.myapplication.ViewModels.MainViewModel
-import com.example.myapplication.ViewModels.MainViewModelFactory
+import com.example.myapplication.api.ProductsApi
+import com.example.myapplication.api.RetrofitHelper
+import com.example.myapplication.models.Fooddata
+import com.example.myapplication.models.Product
+import com.example.myapplication.repository.ProductsRepository
+import com.example.myapplication.viewModels.MainViewModel
+import com.example.myapplication.viewModels.MainViewModelFactory
 import com.facebook.login.LoginManager
 import com.google.android.gms.auth.api.Auth
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
@@ -38,9 +37,8 @@ class Welcome : AppCompatActivity(), GoogleApiClient.OnConnectionFailedListener,
     private var arraylist3 = ArrayList<Product>()
     private val recyclerAdapter = RecyclerAdapter(arraylist3)
     private val recyclerAdapter2 = RecyclerAdapter2(arrayList)
-    lateinit var mainViewModel : MainViewModel
+    private lateinit var mainViewModel : MainViewModel
 
-    @OptIn(DelicateCoroutinesApi::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_welcome)

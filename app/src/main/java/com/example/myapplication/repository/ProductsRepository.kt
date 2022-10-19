@@ -1,9 +1,9 @@
-package com.example.myapplication.Repository
+package com.example.myapplication.repository
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.example.myapplication.Api.ProductsApi
-import com.example.myapplication.Models.ProductList
+import com.example.myapplication.api.ProductsApi
+import com.example.myapplication.models.ProductList
 
 class ProductsRepository(private val productService : ProductsApi) {
 

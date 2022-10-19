@@ -1,6 +1,4 @@
-package com.example.myapplication.Models
-
-import com.example.myapplication.Models.Product
+package com.example.myapplication.models
 
 data class ProductList(
     val limit: Int,

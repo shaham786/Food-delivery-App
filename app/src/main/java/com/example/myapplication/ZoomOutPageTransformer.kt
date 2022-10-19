@@ -2,6 +2,7 @@ package com.example.myapplication
 
 import android.view.View
 import androidx.viewpager2.widget.ViewPager2
+import kotlin.math.abs
 
 class ZoomOutPageTransformer : ViewPager2.PageTransformer {
     private val MIN_SCALE = 0.75f
@@ -26,7 +27,7 @@ class ZoomOutPageTransformer : ViewPager2.PageTransformer {
 
             // Scale the page down ( between MIN_SCALE and 1 )
             val scaleFactor = (MIN_SCALE
-                    + (1 - MIN_SCALE) * (1 - Math.abs(position)))
+                    + (1 - MIN_SCALE) * (1 - abs(position)))
             page.scaleX = scaleFactor
             page.scaleY = scaleFactor
         } else { // ( 1, +Infinity ]

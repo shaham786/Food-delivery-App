@@ -1,15 +1,13 @@
 package com.example.myapplication
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
-import androidx.viewpager2.widget.ViewPager2
 import com.bumptech.glide.Glide
 
-class ViewPager2Adapter(private val context: Context, private val dataset: ArrayList<String>)
+class ViewPager2Adapter(private val dataset: ArrayList<String>)
     : RecyclerView.Adapter<ViewPager2Adapter.ViewPagerHolder>() {
 
     class ViewPagerHolder(view : View) : RecyclerView.ViewHolder(view) {

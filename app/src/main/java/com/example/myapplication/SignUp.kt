@@ -5,6 +5,7 @@ import android.content.Context
 import android.os.Bundle
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
+import com.example.myapplication.models.UserInfo
 
 
 class SignUp : AppCompatActivity() {
