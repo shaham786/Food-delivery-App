@@ -14,6 +14,7 @@ import com.example.myapplication.models.Product
 import java.util.*
 import kotlin.collections.ArrayList
 
+@Suppress("UNCHECKED_CAST")
 class RecyclerAdapter(private var dataset: ArrayList<Product>) :
     RecyclerView.Adapter<RecyclerAdapter.ViewHolder>(),Filterable {
 

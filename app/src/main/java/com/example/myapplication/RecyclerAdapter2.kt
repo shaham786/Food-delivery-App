@@ -13,6 +13,7 @@ import com.example.myapplication.models.Fooddata
 import java.util.*
 import kotlin.collections.ArrayList
 
+@Suppress("UNCHECKED_CAST")
 class RecyclerAdapter2 (private val dataset : ArrayList<Fooddata>):
     RecyclerView.Adapter<RecyclerAdapter2.ViewHolder>(), Filterable{
 
@@ -86,7 +87,7 @@ class RecyclerAdapter2 (private val dataset : ArrayList<Fooddata>):
             @SuppressLint("NotifyDataSetChanged")
             override fun publishResults(constraints: CharSequence?, result: FilterResults) {
                 emptylist =
-                    result.values as ArrayList<Fooddata> /* = java.util.ArrayList<com.example.myapplication.Models.Fooddata> */
+                    result.values as ArrayList<Fooddata>
                 notifyDataSetChanged()
 
 
