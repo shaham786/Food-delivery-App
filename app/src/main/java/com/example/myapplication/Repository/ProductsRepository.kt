@@ -10,11 +10,11 @@ class ProductsRepository(private val productService : ProductsApi) {
     private val productsLiveData = MutableLiveData<ProductList>()
 
     val products : LiveData<ProductList>
-    get() = productsLiveData
+        get() = productsLiveData
 
-    suspend fun getProducts(page:Int):LiveData<ProductList>{
+    suspend fun getProducts(page:Int){
         val result = productService.getProducts(page)
-        if (result?.body() != null){
+        if (result.body() != null){
             productsLiveData.postValue(result.body())
         }
         return

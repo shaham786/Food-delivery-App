@@ -25,6 +25,13 @@ class RecyclerAdapter(private var dataset: ArrayList<Product>) :
         emptylist2 = dataset as ArrayList<Product>
     }
 
+    @SuppressLint("NotifyDataSetChanged")
+    fun setData(list : ArrayList<Product>){
+        emptylist2.clear()
+        emptylist2.addAll(list)
+        notifyDataSetChanged()
+    }
+
 
     var onItemClick1 : ((Product) -> Unit)? = null
 

@@ -8,14 +8,17 @@ import com.example.myapplication.Repository.ProductsRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class MainViewModel(private val repository: ProductsRepository): ViewModel() {
+class MainViewModel(private val repository: ProductsRepository) : ViewModel() {
 
     init {
         viewModelScope.launch(Dispatchers.IO) {
-        repository.getProducts(1)
+            repository.getProducts(1)
+
         }
     }
-    val product : LiveData<ProductList>
-    get() = repository.products
 
- }
+    fun getProducts() : LiveData<ProductList> {
+        return repository.products
+    }
+
+}

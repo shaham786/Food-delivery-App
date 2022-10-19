@@ -53,14 +53,12 @@ class Welcome : AppCompatActivity(), GoogleApiClient.OnConnectionFailedListener,
             val productsAPI = RetrofitHelper.getInstance1().create(ProductsApi::class.java)
             val repository = ProductsRepository(productsAPI)
             mainViewModel = ViewModelProvider(this,MainViewModelFactory(repository)).get(MainViewModel::class.java)
-            mainViewModel.product.observe(this, Observer {
-                arraylist3=it.products
+            mainViewModel.getProducts().observe(this) {
                 runOnUiThread {
                     progressBar.visibility = View.GONE
-                    loadDataToRecyclerView()
+                    loadDataToRecyclerView(it.products)
                 }
-            })
-           // mainViewModel.product
+            }
         }
 
         catch (e: Exception) {
@@ -235,7 +233,7 @@ class Welcome : AppCompatActivity(), GoogleApiClient.OnConnectionFailedListener,
 
     }
 
-    private fun loadDataToRecyclerView() {
+    private fun loadDataToRecyclerView(list : ArrayList<Product>) {
         //RecyclerView initialize
         //API data load into recyclerView ArrayList
 
@@ -243,6 +241,7 @@ class Welcome : AppCompatActivity(), GoogleApiClient.OnConnectionFailedListener,
         val recyclerView1 = findViewById<RecyclerView>(R.id.recyclerView1)
         recyclerView1.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
         Log.d("ABC", arraylist3.size.toString())
+        recyclerAdapter.setData(list)
         recyclerView1.adapter = recyclerAdapter
         recyclerAdapter.onItemClick1 = {
             val intent = Intent(this, Details::class.java)
