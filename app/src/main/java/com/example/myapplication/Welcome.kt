@@ -4,7 +4,6 @@ package com.example.myapplication
 
 import android.content.Intent
 import android.content.SharedPreferences
-import android.opengl.Visibility
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -12,16 +11,23 @@ import android.widget.Button
 import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.myapplication.Api.ProductsApi
+import com.example.myapplication.Api.RetrofitHelper
+import com.example.myapplication.Models.Fooddata
+import com.example.myapplication.Models.Product
+import com.example.myapplication.Repository.ProductsRepository
+import com.example.myapplication.ViewModels.MainViewModel
+import com.example.myapplication.ViewModels.MainViewModelFactory
 import com.facebook.login.LoginManager
 import com.google.android.gms.auth.api.Auth
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.ConnectionResult
 import com.google.android.gms.common.api.GoogleApiClient
-import kotlinx.coroutines.DelicateCoroutinesApi
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.*
 
 
 @Suppress("DEPRECATION")
@@ -29,9 +35,10 @@ class Welcome : AppCompatActivity(), GoogleApiClient.OnConnectionFailedListener,
     GoogleApiClient.ConnectionCallbacks {
 
     private val arrayList = ArrayList<Fooddata>()
-    private val arraylist3 = ArrayList<Product>()
+    private var arraylist3 = ArrayList<Product>()
     private val recyclerAdapter = RecyclerAdapter(arraylist3)
     private val recyclerAdapter2 = RecyclerAdapter2(arrayList)
+    lateinit var mainViewModel : MainViewModel
 
     @OptIn(DelicateCoroutinesApi::class)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -39,31 +46,24 @@ class Welcome : AppCompatActivity(), GoogleApiClient.OnConnectionFailedListener,
         setContentView(R.layout.activity_welcome)
 //        supportActionBar!!.setBackgroundDrawable(ColorDrawable(Color.parseColor("#144BDE")))
         val progressBar = findViewById<ProgressBar>(R.id.progressBar)
+
         try {
 
             progressBar.visibility = View.VISIBLE
-            GlobalScope.launch {
-                val productsAPI = RetrofitHelper.getInstance1().create(ProductsApi::class.java)
-
-                val product = productsAPI.getProducts(1)
-                if (product != null) {
-
-                    val productList = product.body()
-                    productList?.products?.forEach {
-                        Log.d("API", it.description)
-                        arraylist3.add(
-                            it
-                        )
-                    }
-                    runOnUiThread {
-                        progressBar.visibility = View.GONE
-                        loadDataToRecyclerView()
-                    }
-
+            val productsAPI = RetrofitHelper.getInstance1().create(ProductsApi::class.java)
+            val repository = ProductsRepository(productsAPI)
+            mainViewModel = ViewModelProvider(this,MainViewModelFactory(repository)).get(MainViewModel::class.java)
+            mainViewModel.product.observe(this, Observer {
+                arraylist3=it.products
+                runOnUiThread {
+                    progressBar.visibility = View.GONE
+                    loadDataToRecyclerView()
                 }
+            })
+           // mainViewModel.product
+        }
 
-            }
-        } catch (e: Exception) {
+        catch (e: Exception) {
             progressBar.visibility = View.VISIBLE
         }
 

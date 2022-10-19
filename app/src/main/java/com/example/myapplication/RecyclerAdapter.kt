@@ -10,6 +10,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.myapplication.Models.Product
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -97,7 +98,7 @@ class RecyclerAdapter(private var dataset: ArrayList<Product>) :
 
                 override fun publishResults(constraints: CharSequence?, result: FilterResults) {
                     emptylist2 =
-                        result.values as ArrayList<Product> /* = java.util.ArrayList<com.example.myapplication.Fooddata> */
+                        result.values as ArrayList<Product> /* = java.util.ArrayList<com.example.myapplication.Models.Fooddata> */
                     notifyDataSetChanged()
 
 

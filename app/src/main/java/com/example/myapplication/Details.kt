@@ -3,17 +3,13 @@ package com.example.myapplication
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.RecyclerView
-import androidx.viewpager2.widget.ViewPager2
-import androidx.viewpager2.widget.ViewPager2.OnPageChangeCallback
+import com.example.myapplication.Models.Fooddata
+import com.example.myapplication.Models.Product
 import com.example.myapplication.databinding.ActivityDetailsBinding
-import java.text.FieldPosition
 
 class Details : AppCompatActivity() {
     private lateinit var binding : ActivityDetailsBinding

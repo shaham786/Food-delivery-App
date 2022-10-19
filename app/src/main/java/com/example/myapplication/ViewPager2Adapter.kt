@@ -15,17 +15,11 @@ class ViewPager2Adapter(private val context: Context, private val dataset: Array
     class ViewPagerHolder(view : View) : RecyclerView.ViewHolder(view) {
         val itemimage : ImageView
 
-
         init {
 
             itemimage = view.findViewById(R.id.idIVImage)
-
-
-
         }
-
     }
-
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewPagerHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.imagelayout,parent,false)
@@ -34,12 +28,9 @@ class ViewPager2Adapter(private val context: Context, private val dataset: Array
 
     override fun onBindViewHolder(holder: ViewPagerHolder, position: Int) {
         Glide.with(holder.itemimage.context).load(dataset[position]).into(holder.itemimage)
-
     }
 
     override fun getItemCount(): Int {
         return dataset.size
     }
-
-
 }

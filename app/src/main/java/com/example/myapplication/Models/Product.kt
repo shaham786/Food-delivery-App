@@ -1,4 +1,4 @@
-package com.example.myapplication
+package com.example.myapplication.Models
 
 import android.os.Parcelable
 import java.io.Serializable

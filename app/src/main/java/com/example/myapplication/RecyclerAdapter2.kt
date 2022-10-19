@@ -1,6 +1,5 @@
 package com.example.myapplication
 
-import android.service.autofill.Dataset
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,6 +8,7 @@ import android.widget.Filterable
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.myapplication.Models.Fooddata
 
 class RecyclerAdapter2 (private val dataset : ArrayList<Fooddata>):
     RecyclerView.Adapter<RecyclerAdapter2.ViewHolder>(), Filterable{
@@ -82,7 +82,7 @@ class RecyclerAdapter2 (private val dataset : ArrayList<Fooddata>):
 
             override fun publishResults(constraints: CharSequence?, result: FilterResults) {
                 emptylist =
-                    result.values as ArrayList<Fooddata> /* = java.util.ArrayList<com.example.myapplication.Fooddata> */
+                    result.values as ArrayList<Fooddata> /* = java.util.ArrayList<com.example.myapplication.Models.Fooddata> */
                 notifyDataSetChanged()
 
 

@@ -1,5 +1,6 @@
-package com.example.myapplication
+package com.example.myapplication.Api
 
+import com.example.myapplication.Models.ProductList
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Query
