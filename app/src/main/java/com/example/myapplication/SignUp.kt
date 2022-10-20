@@ -83,10 +83,6 @@ class SignUp : AppCompatActivity() {
             editor.apply()
 
 
-
-
-
-
             UserInfo(name, uname, email, password)
             Toast.makeText(this@SignUp, "User Created Successfully", Toast.LENGTH_LONG)
                 .show()

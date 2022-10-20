@@ -1,4 +1,4 @@
-package com.example.myapplication
+package com.example.myapplication.adapters
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
@@ -10,11 +10,11 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.myapplication.R
 import com.example.myapplication.models.Product
 import java.util.*
 import kotlin.collections.ArrayList
 
-@Suppress("UNCHECKED_CAST")
 class RecyclerAdapter(private var dataset: ArrayList<Product>) :
     RecyclerView.Adapter<RecyclerAdapter.ViewHolder>(),Filterable {
 
@@ -89,8 +89,8 @@ class RecyclerAdapter(private var dataset: ArrayList<Product>) :
                     } else {
                         val resultlist =  ArrayList<Product>()
                         for (row in dataset) {
-                            if (row.brand.lowercase(Locale.getDefault())
-                                    .startsWith(charString.lowercase(Locale.getDefault()),true)
+                            if (row.brand?.lowercase(Locale.getDefault())
+                                    ?.startsWith(charString.lowercase(Locale.getDefault()),true) == true
                             ) {
                                 resultlist.add(row)
                             }
@@ -107,7 +107,7 @@ class RecyclerAdapter(private var dataset: ArrayList<Product>) :
                 @SuppressLint("NotifyDataSetChanged")
                 override fun publishResults(constraints: CharSequence?, result: FilterResults) {
                     emptylist2 =
-                        result.values as ArrayList<Product>
+                        result.values as ArrayList<Product> /* = java.util.ArrayList<com.example.myapplication.Models.Fooddata> */
                     notifyDataSetChanged()
 
 

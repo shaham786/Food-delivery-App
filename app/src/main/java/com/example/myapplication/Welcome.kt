@@ -14,6 +14,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.myapplication.adapters.RecyclerAdapter
+import com.example.myapplication.adapters.RecyclerAdapter2
+import com.example.myapplication.api.ProductApplication
 import com.example.myapplication.api.ProductsApi
 import com.example.myapplication.api.RetrofitHelper
 import com.example.myapplication.models.Fooddata
@@ -48,8 +51,8 @@ class Welcome : AppCompatActivity(), GoogleApiClient.OnConnectionFailedListener,
         try {
 
             progressBar.visibility = View.VISIBLE
-            val productsAPI = RetrofitHelper.getInstance1().create(ProductsApi::class.java)
-            val repository = ProductsRepository(productsAPI)
+
+            val repository = (application as ProductApplication).productsRepository
             mainViewModel = ViewModelProvider(this,MainViewModelFactory(repository)).get(MainViewModel::class.java)
             mainViewModel.getProducts().observe(this) {
                 runOnUiThread {
@@ -99,57 +102,6 @@ class Welcome : AppCompatActivity(), GoogleApiClient.OnConnectionFailedListener,
         val searchView = findViewById<androidx.appcompat.widget.SearchView>(R.id.searchview)
 
 
-//        arrayList2.add(
-//            Fooddata(
-//                "Delivery Rs.70", "Burger King", R.drawable.burgerking,
-//                "Islamabad\n" + "Contact No.0312 7855523\n" + "Open ⋅ Closes 12:01AM\n" + "Dine-in·\n" +
-//                        "Drive-through·\n" + "No-contact delivery"
-//            )
-//        )
-//        arrayList2.add(
-//            Fooddata(
-//                "Delivery Rs.90", "Subway", R.drawable.subway,
-//                "Johar Rd\n" + "F-8/4 Markaz\n" + "Islamabad\n" + "Open ⋅ Closes 12:01AM\n" +
-//                        "Dine-in·\n" + "Drive-through·\n" + "No-contact delivery"
-//            )
-//        )
-//        arrayList2.add(
-//            Fooddata(
-//                "Delivery Rs.50", "KFC", R.drawable.kfc,
-//                "F8/4 Islamabad\n" + "Open ⋅ Closes 12:01AM\n" + "Dine-in\n" +
-//                        "Drive-through·\n" + "No-contact delivery"
-//            )
-//        )
-//        arrayList2.add(
-//            Fooddata(
-//                "Delivery Rs.60", "Pizza Hut", R.drawable.pizzahut,
-//                "F8/4 Islamabad\n" + "Open ⋅ Closes 12:01AM\n" + "Dine-in·\n" +
-//                        "Drive-through·\n" + "No-contact delivery"
-//            )
-//        )
-//        arrayList2.add(
-//            Fooddata(
-//                "Delivery Rs.80", "Mc Donald's", R.drawable.mcdonalds,
-//                "F8/4 Islamabad\n" + "Open ⋅ Closes 12:01AM\n" +
-//                        "Dine-in·\n" + "Drive-through\n" + "No-contact delivery"
-//            )
-//        )
-//        arrayList2.add(
-//            Fooddata(
-//                "Delivery Rs.80", "Domino's", R.drawable.dominos,
-//                "F8/4 Islamabad\n" + "Open ⋅ Closes 12:01AM\n" + "Dine-in·\n" +
-//                        "Drive-through·\n" + "No-contact delivery"
-//            )
-//        )
-//        arrayList2.add(
-//            Fooddata(
-//                "Delivery Rs.80", "Texas Chicken", R.drawable.texas,
-//                "F8/4 Islamabad\n" + "Open ⋅ Closes 12:01AM\n" + "Dine-in·\n" +
-//                        "Drive-through·\n" + "No-contact delivery"
-//            )
-//        )
-
-
         searchView.setOnQueryTextListener(object :
             androidx.appcompat.widget.SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(p0: String?): Boolean {
@@ -157,24 +109,13 @@ class Welcome : AppCompatActivity(), GoogleApiClient.OnConnectionFailedListener,
             }
 
             override fun onQueryTextChange(query: String?): Boolean {
-//                Log.d("onQueryTextChange", "query: $query")
+//
                 recyclerAdapter.filter.filter(query)
                 recyclerAdapter2.filter.filter(query)
                 return true
             }
 
         })
-
-//        recyclerAdapter.notifyDataSetChanged()
-//        recyclerView1.adapter = recyclerAdapter
-//        recyclerAdapter.onItemClick1 = {
-//            val intent = Intent(this, Details::class.java)
-//            intent.putExtra("food", it)
-//            startActivity(intent)
-//        }
-
-        //    2nd recyclerView
-
 
         arrayList.add(
             Fooddata(
@@ -232,9 +173,9 @@ class Welcome : AppCompatActivity(), GoogleApiClient.OnConnectionFailedListener,
     }
 
     private fun loadDataToRecyclerView(list : ArrayList<Product>) {
+
         //RecyclerView initialize
         //API data load into recyclerView ArrayList
-
 
         val recyclerView1 = findViewById<RecyclerView>(R.id.recyclerView1)
         recyclerView1.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)

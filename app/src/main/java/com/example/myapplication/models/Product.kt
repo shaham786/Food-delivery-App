@@ -1,10 +1,19 @@
 package com.example.myapplication.models
 
+import androidx.room.ColumnInfo
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+import com.google.gson.annotations.SerializedName
 import java.io.Serializable
 
-
-class Product(
-    val brand: String,
+@Entity(tableName = "product")
+data class Product(
+    @PrimaryKey(autoGenerate = true)
+    @SerializedName("productId")
+    val productId : Int?,
+    @ColumnInfo(name="brand")
+    @SerializedName("brand")
+    val brand: String?,
     val category: String,
     val description: String,
     val discountPercentage: Double,
@@ -15,4 +24,5 @@ class Product(
     val stock: Int,
     val thumbnail: String,
     val title: String
-) : Serializable
+) : Serializable{
+}

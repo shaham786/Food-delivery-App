@@ -7,6 +7,8 @@ import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import com.example.myapplication.adapters.ViewPager2Adapter
+import com.example.myapplication.adapters.ZoomOutPageTransformer
 import com.example.myapplication.models.Fooddata
 import com.example.myapplication.models.Product
 import com.example.myapplication.databinding.ActivityDetailsBinding
@@ -39,37 +41,15 @@ class Details : AppCompatActivity() {
         binding.wormDot.attachTo(binding.Viewpager2)
 
 
-//        binding.Viewpager2.adapter = ViewPager2Adapter(this@Details, dataset)
-//        binding.Viewpager2.setPageTransformer(ZoomOutPageTransformer())
-//        binding.wormDot.attachTo(binding.Viewpager2)
-
-//        viewPager = findViewById(R.id.detailsIv)
-//        val wormdots = findViewById<WormDotsIndicator>(R.id.worm_dot)
-//
-//
-//        val food = intent.getSerializableExtra("food") as Product?
-//        food?.images?.forEach {
-//            imageList.add(it)
-//
-//        }
-//        viewPagerAdapter = ViewPagerAdapter(this@Details, imageList)
-//
-//        viewPager.adapter = viewPagerAdapter
-//        wormdots.setViewPager(viewPager)
-
         if (food != null) {
 
             val textView: TextView = findViewById(R.id.detailsDTv)
             val textView2: TextView = findViewById(R.id.detailsTTv)
             val details: TextView = findViewById(R.id.productDetailsTv)
-//            val imageView : ImageView = findViewById(R.id.idIVImage)
 
             textView.text = food.description
             textView2.text = food.brand
             details.text = "Rating : " + food.rating.toString() + ""
-//            imageView.setImageResource(food.imageView)
-//            Glide.with(imageView).load(food.thumbnail).into(imageView)
-
 
         }
 //        For RECYCLERVIEW 1 (Restaurants onclick Details)
@@ -85,10 +65,6 @@ class Details : AppCompatActivity() {
             textView2.text = food1.textView2
             details.text = food1.details
             imageView.setImageResource(food1.imageView)
-
-
-
-
 
         }
 

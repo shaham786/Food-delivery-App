@@ -1,4 +1,4 @@
-package com.example.myapplication
+package com.example.myapplication.adapters
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
@@ -9,11 +9,11 @@ import android.widget.Filterable
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.myapplication.R
 import com.example.myapplication.models.Fooddata
 import java.util.*
 import kotlin.collections.ArrayList
 
-@Suppress("UNCHECKED_CAST")
 class RecyclerAdapter2 (private val dataset : ArrayList<Fooddata>):
     RecyclerView.Adapter<RecyclerAdapter2.ViewHolder>(), Filterable{
 
@@ -41,12 +41,12 @@ class RecyclerAdapter2 (private val dataset : ArrayList<Fooddata>):
 
         }
     }
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerAdapter2.ViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.cardlayout2,parent,false)
         return ViewHolder(view)
     }
 
-    override fun onBindViewHolder(holder: RecyclerAdapter2.ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder. itemdetail.text = emptylist[position].textView
         holder.itemtitle.text = emptylist[position].textView2
         holder.itemimage.setImageResource(emptylist[position].imageView)
@@ -55,8 +55,6 @@ class RecyclerAdapter2 (private val dataset : ArrayList<Fooddata>):
             onItemClick?.invoke(emptylist[position])
         }
     }
-
-
 
     override fun getItemCount() = emptylist.size
 
@@ -87,10 +85,8 @@ class RecyclerAdapter2 (private val dataset : ArrayList<Fooddata>):
             @SuppressLint("NotifyDataSetChanged")
             override fun publishResults(constraints: CharSequence?, result: FilterResults) {
                 emptylist =
-                    result.values as ArrayList<Fooddata>
+                    result.values as ArrayList<Fooddata> /* = java.util.ArrayList<com.example.myapplication.Models.Fooddata> */
                 notifyDataSetChanged()
-
-
             }
         }
     }
