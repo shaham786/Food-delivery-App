@@ -16,7 +16,7 @@ class ProductApplication : Application() {
     private fun initialize(){
         val productsAPI = RetrofitHelper.getInstance1().create(ProductsApi::class.java)
         val database = ProductDatabase.getDatabase(applicationContext)
-        productsRepository = ProductsRepository(productsAPI, database)
+        productsRepository = ProductsRepository(productsAPI, database, applicationContext)
 
     }
 }
