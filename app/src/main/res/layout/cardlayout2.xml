@@ -8,14 +8,12 @@
     android:orientation="horizontal"
     app:cardCornerRadius="20dp"
     app:cardPreventCornerOverlap="false"
-
-
     >
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/relativelayout2"
         android:layout_width="wrap_content"
         android:layout_height="100dp"
-
         android:background="@drawable/roundedrv">
 
         <com.makeramen.roundedimageview.RoundedImageView
@@ -29,6 +27,7 @@
             app:riv_corner_radius_top_left="20dp"
             app:riv_corner_radius_bottom_left="20dp"
             />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -38,12 +37,11 @@
             android:layout_marginEnd="16dp"
             android:layout_marginTop="10dp"
             android:textSize="30sp"
-
             app:layout_constraintStart_toEndOf="@id/item_image"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="@id/relativelayout2"
-
             />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -55,8 +53,6 @@
             app:layout_constraintEnd_toEndOf="@id/relativelayout2"
             app:layout_constraintStart_toEndOf="@id/item_image"
             app:layout_constraintTop_toBottomOf="@id/item_title"
-
-
             />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

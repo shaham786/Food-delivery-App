@@ -1,4 +1,4 @@
-package com.example.myapplication
+package com.example.myapplication.activities
 
 import android.annotation.SuppressLint
 import android.content.Intent
@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.os.Handler
 import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
+import com.example.myapplication.R
 
 
 @SuppressLint("CustomSplashScreen")
@@ -38,6 +39,7 @@ class SplashScreen : AppCompatActivity() {
                 val editor = sharedPreferences.edit()
 
                 editor.apply()
+
                 val intent = Intent(this, Welcome::class.java)
                 startActivity(intent)
             }

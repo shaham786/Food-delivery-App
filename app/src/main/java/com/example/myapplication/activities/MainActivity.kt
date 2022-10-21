@@ -1,4 +1,4 @@
-package com.example.myapplication
+package com.example.myapplication.activities
 
 import android.app.Activity
 import android.content.Intent
@@ -9,6 +9,7 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
+import com.example.myapplication.R
 import com.example.myapplication.databinding.ActivityMainBinding
 import com.facebook.AccessToken
 import com.facebook.CallbackManager
@@ -33,8 +34,6 @@ class MainActivity : AppCompatActivity() {
     private lateinit var googleSignInClient: GoogleSignInClient
     private lateinit var auth: FirebaseAuth
     private var callbackManager: CallbackManager? = null
-
-
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -114,6 +113,7 @@ class MainActivity : AppCompatActivity() {
                 return@setOnClickListener
             } else {
 
+                intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
                 val intent = Intent(this@MainActivity, Welcome::class.java)
                 startActivity(intent)
 

@@ -8,7 +8,8 @@
     android:orientation="horizontal"
     app:cardCornerRadius="20dp"
     app:cardPreventCornerOverlap="false"
-
+    app:cardUseCompatPadding="true"
+    android:elevation="50dp"
 
     >
 
@@ -17,7 +18,6 @@
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:background="@drawable/roundedrv"
-
 
         >
 
@@ -52,7 +52,6 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:textColor="@color/black"
-            android:text="Rs."
             app:layout_constraintStart_toEndOf="@id/item_image"
             app:layout_constraintTop_toBottomOf="@id/item_title" />
 

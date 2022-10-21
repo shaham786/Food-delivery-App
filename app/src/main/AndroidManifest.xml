@@ -20,7 +20,7 @@
         android:theme="@style/Theme.MyApplication"
         tools:targetApi="31">
         <activity
-            android:name=".SplashScreen"
+            android:name=".activities.SplashScreen"
             android:exported="true"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
@@ -59,21 +59,21 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Details"
+            android:name=".activities.Details"
             android:screenOrientation="portrait"
             android:exported="true" />
         <activity
-            android:name=".Welcome"
+            android:name=".activities.Welcome"
             android:screenOrientation="portrait"
             android:exported="true" />
         <activity
-            android:name=".SignUp"
+            android:name=".activities.SignUp"
             android:exported="true"
             android:label="@string/title_activity_sign_up"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.MyApplication.NoActionBar" />
         <activity
-            android:name=".MainActivity"
+            android:name=".activities.MainActivity"
             android:screenOrientation="portrait"
             android:exported="false">
 

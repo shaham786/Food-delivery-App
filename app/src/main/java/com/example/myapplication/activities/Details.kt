@@ -1,4 +1,4 @@
-package com.example.myapplication
+package com.example.myapplication.activities
 
 import android.annotation.SuppressLint
 import android.content.Intent
@@ -7,6 +7,7 @@ import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import com.example.myapplication.R
 import com.example.myapplication.adapters.ViewPager2Adapter
 import com.example.myapplication.adapters.ZoomOutPageTransformer
 import com.example.myapplication.models.Fooddata

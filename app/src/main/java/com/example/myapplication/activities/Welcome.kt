@@ -1,6 +1,6 @@
 @file:Suppress("DEPRECATION")
 
-package com.example.myapplication
+package com.example.myapplication.activities
 
 import android.content.Intent
 import android.content.SharedPreferences
@@ -14,14 +14,12 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.myapplication.R
 import com.example.myapplication.adapters.RecyclerAdapter
 import com.example.myapplication.adapters.RecyclerAdapter2
 import com.example.myapplication.api.ProductApplication
-import com.example.myapplication.api.ProductsApi
-import com.example.myapplication.api.RetrofitHelper
 import com.example.myapplication.models.Fooddata
 import com.example.myapplication.models.Product
-import com.example.myapplication.repository.ProductsRepository
 import com.example.myapplication.viewModels.MainViewModel
 import com.example.myapplication.viewModels.MainViewModelFactory
 import com.facebook.login.LoginManager
@@ -203,11 +201,6 @@ class Welcome : AppCompatActivity(), GoogleApiClient.OnConnectionFailedListener,
 
     override fun onConnectionSuspended(p0: Int) {
         Toast.makeText(this@Welcome, "Connection Suspended", Toast.LENGTH_LONG).show()
-
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
 
     }
 
