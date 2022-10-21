@@ -3,6 +3,7 @@ package com.example.myapplication
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
@@ -41,27 +42,17 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-
+//      FaceBook SignIN
         callbackManager = CallbackManager.Factory.create()
         val signInbtn = binding.loginButton
         signInbtn.setReadPermissions("email")
         signInbtn.setOnClickListener{
             fbsignIn()
-            /*val intent = Intent(this@MainActivity, Welcome::class.java)
-            startActivity(intent)
-*/
-
-            //test commit
-
-            //master 1.0 work
         }
-
-
-
 
         auth = FirebaseAuth.getInstance()
 
-
+//        GoogleSignIn
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
             .requestIdToken(getString(R.string.default_web_client_id))
             .requestEmail()
@@ -132,12 +123,38 @@ class MainActivity : AppCompatActivity() {
 
         }
 
+
+//        google login status check
+        if(GoogleSignIn.getLastSignedInAccount(this@MainActivity) != null){
+            Log.i("SignInCheck", "onCreate: Google User Logged IN")
+            val intent = Intent(this@MainActivity, Welcome::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
+            startActivity(intent)
+        }else{
+            Log.i("SignInCheck", "onCreate: Google User Logged Out")
+        }
+
+//        FB login status check
+        if(isLoggedIn()){
+
+            Log.i("SignInCheck", "onCreate: FB User Logged In")
+            val intent = Intent(this@MainActivity, Welcome::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
+            startActivity(intent)
+        }else{
+            Log.i("SignInCheck", "onCreate: FB User Logged Out")
+        }
+
+    }
+
+    fun isLoggedIn(): Boolean {
+        val accessToken = AccessToken.getCurrentAccessToken()
+        return accessToken != null
     }
 
     private fun fbsignIn() {
         binding.loginButton.registerCallback(callbackManager, object : FacebookCallback<LoginResult>{
             override fun onCancel() {
-
             }
 
             override fun onError(error: FacebookException) {
@@ -146,6 +163,7 @@ class MainActivity : AppCompatActivity() {
             override fun onSuccess(result: LoginResult) {
 
                 handleFacebookAccessToken(result.accessToken)
+                Toast.makeText(this@MainActivity, "Login Success",Toast.LENGTH_LONG).show()
                 val intent = Intent(this@MainActivity, Welcome::class.java)
                 startActivity(intent)
             }

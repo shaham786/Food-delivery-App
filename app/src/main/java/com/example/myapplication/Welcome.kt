@@ -206,5 +206,10 @@ class Welcome : AppCompatActivity(), GoogleApiClient.OnConnectionFailedListener,
 
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+
+    }
+
 
 }
