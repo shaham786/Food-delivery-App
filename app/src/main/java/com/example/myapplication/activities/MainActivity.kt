@@ -147,7 +147,7 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    fun isLoggedIn(): Boolean {
+    private fun isLoggedIn(): Boolean {
         val accessToken = AccessToken.getCurrentAccessToken()
         return accessToken != null
     }
@@ -155,9 +155,13 @@ class MainActivity : AppCompatActivity() {
     private fun fbsignIn() {
         binding.loginButton.registerCallback(callbackManager, object : FacebookCallback<LoginResult>{
             override fun onCancel() {
+                Toast.makeText(this@MainActivity, "Connection error",Toast.LENGTH_LONG).show()
+
             }
 
             override fun onError(error: FacebookException) {
+                Toast.makeText(this@MainActivity, "Connection error",Toast.LENGTH_LONG).show()
+
             }
 
             override fun onSuccess(result: LoginResult) {

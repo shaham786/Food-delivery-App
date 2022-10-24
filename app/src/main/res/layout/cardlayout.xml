@@ -4,13 +4,11 @@
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/card_view"
-    android:layout_margin="5dp"
     android:orientation="horizontal"
     app:cardCornerRadius="20dp"
     app:cardPreventCornerOverlap="false"
     app:cardUseCompatPadding="true"
-    android:elevation="50dp"
-
+    app:cardElevation="5dp"
     >
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -18,7 +16,6 @@
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:background="@drawable/roundedrv"
-
         >
 
 
@@ -30,8 +27,6 @@
             app:layout_constraintStart_toStartOf="@id/relativelayout"
             app:layout_constraintTop_toTopOf="@id/relativelayout"
             app:layout_constraintTop_toBottomOf="@id/relativelayout"
-            app:riv_corner_radius_bottom_left="20dp"
-            app:riv_corner_radius_top_left="20dp"
             />
 
         <TextView

@@ -20,28 +20,22 @@ class Details : AppCompatActivity() {
     private var dataset = ArrayList<String>()
 
 
-    /*private lateinit var viewPager: ViewPager
-    private lateinit var viewPagerAdapter: ViewPagerAdapter*/
-
-
-
     @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityDetailsBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-
         val food = intent.getSerializableExtra("food") as Product?
         food?.images?.forEach {
             dataset.add(it)
-
         }
+
         binding.Viewpager2.adapter = ViewPager2Adapter(dataset)
         binding.Viewpager2.setPageTransformer(ZoomOutPageTransformer())
         binding.wormDot.attachTo(binding.Viewpager2)
 
-
+//        For Recyclerview 2(Restaurants)
         if (food != null) {
 
             val textView: TextView = findViewById(R.id.detailsDTv)
@@ -53,7 +47,7 @@ class Details : AppCompatActivity() {
             details.text = "Rating : " + food.rating.toString() + ""
 
         }
-//        For RECYCLERVIEW 1 (Restaurants onclick Details)
+//        For RECYCLERVIEW 1 (Food onclick Details)
         val food1 = intent.getParcelableExtra<Fooddata>("food")
         if (food1 != null) {
 

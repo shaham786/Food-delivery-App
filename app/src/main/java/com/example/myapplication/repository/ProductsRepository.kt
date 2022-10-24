@@ -12,8 +12,7 @@ import com.example.myapplication.utils.NetworkUtils
 class ProductsRepository(
     private val productService: ProductsApi,
     private val productDatabase: ProductDatabase,
-    private val applicationContext: Context
-) {
+    private val applicationContext: Context ) {
 
     private val productsLiveData = MutableLiveData<ProductList>()
 
@@ -29,15 +28,11 @@ class ProductsRepository(
                 productDatabase.productDao().addProduct(result.body()!!.products)
                 productsLiveData.postValue(result.body())
             }
-
         }
         else{
             val  products = productDatabase.productDao().getProduct1()
             val productList = ProductList(1, products as ArrayList<Product>,1,1)
             productsLiveData.postValue(productList)
         }
-
-
-
     }
 }
