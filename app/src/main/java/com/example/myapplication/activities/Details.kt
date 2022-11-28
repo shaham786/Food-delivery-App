@@ -26,6 +26,8 @@ class Details : AppCompatActivity() {
         binding = ActivityDetailsBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+
+//        For Recyclerview 2(Restaurants)
         val food = intent.getSerializableExtra("food") as Product?
         food?.images?.forEach {
             dataset.add(it)
@@ -35,7 +37,7 @@ class Details : AppCompatActivity() {
         binding.Viewpager2.setPageTransformer(ZoomOutPageTransformer())
         binding.wormDot.attachTo(binding.Viewpager2)
 
-//        For Recyclerview 2(Restaurants)
+
         if (food != null) {
 
             val textView: TextView = findViewById(R.id.detailsDTv)

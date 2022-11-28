@@ -78,17 +78,19 @@ class Welcome : AppCompatActivity(), GoogleApiClient.OnConnectionFailedListener,
 
         mGoogleApiClient.connect()
 
+//        google logout
         findViewById<Button>(R.id.signOutbtn).setOnClickListener {
             Auth.GoogleSignInApi.signOut(mGoogleApiClient)
                 .setResultCallback { finish() }
+
+//            normal logout
             val sharedPreferences: SharedPreferences =
                 getSharedPreferences("UserPreference", MODE_PRIVATE)
             val editor: SharedPreferences.Editor = sharedPreferences.edit()
             editor.clear()
             editor.apply()
 
-
-
+//            fb logout
             LoginManager.getInstance().logOut()
             val intent2 = Intent(this@Welcome, MainActivity::class.java)
             startActivity(intent2)
@@ -160,7 +162,6 @@ class Welcome : AppCompatActivity(), GoogleApiClient.OnConnectionFailedListener,
         val recyclerView2 = findViewById<RecyclerView>(R.id.recyclerView)
         recyclerView2.layoutManager =
             LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
-
         recyclerView2.adapter = recyclerAdapter2
         recyclerAdapter2.onItemClick = {
             val intent = Intent(this, Details::class.java)

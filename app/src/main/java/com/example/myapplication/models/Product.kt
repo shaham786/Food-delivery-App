@@ -8,15 +8,13 @@ import java.io.Serializable
 
 @Entity(tableName = "product")
 data class Product(
-    @PrimaryKey(autoGenerate = true)
-    @SerializedName("productId")
-    val productId : Int?,
     @ColumnInfo(name="brand")
     @SerializedName("brand")
     val brand: String?,
     val category: String,
     val description: String,
     val discountPercentage: Double,
+    @PrimaryKey
     val id: Int,
     val images: List<String>,
     val price: Int,
